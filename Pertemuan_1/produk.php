@@ -30,8 +30,13 @@ echo "<br>";
 // membuat objek produk kedua
 $produk2 = new produk();
 $produk2->judul = "Call of Duty";
-$produk2->penulis = "Activision";
-$produk2->penerbit = "Activision";
+$produk2->developer = "Activision";
 $produk2->harga = 500000;
 // menampilkan informasi produk
-echo "Game : $produk2->judul, $produk2->penulis, $produk2->penerbit, Harga: $produk2->harga";
+echo "Game : $produk2->judul, $produk2->developer, Harga: $produk2->harga";
+
+echo "<br>";
+
+var_dump($produk1);
+echo "<br>";
+var_dump($produk2);

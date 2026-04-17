@@ -6,10 +6,10 @@
 
 class produk {
 
-public $judul,
-       $penulis,
-       $penerbit,
-       $harga;
+public $judul = "judul",
+       $penulis = "penulis",
+       $penerbit = "penerbit",
+       $harga = 0;
 
 
 }

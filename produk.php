@@ -4,39 +4,57 @@
 // Komik
 // Game
 
-class produk {
+class Produk {
 
 // property
-public $judul, $tipe, $penulis, $penerbit, $developer, $harga;
+public $judul, $penulis, $penerbit, $developer, $harga;
 
 
 // Constructor untuk menginisialisasi properti dengan nilai default
-       public function __construct($judul = "judul", $tipe = "tipe", $penulis = "penulis", $penerbit = "penerbit", $developer = "developer", $harga = 0) {
+       public function __construct($judul = "judul", $harga = 0) {
         // Mengisi properti dengan nilai yang diberikan atau nilai default
         $this->judul = $judul;
-        $this->tipe = $tipe;
-        $this->penulis = $penulis;
-        $this->penerbit = $penerbit;
-        $this->developer = $developer;
         $this->harga = $harga;
        }
-
-       public function cetakInfoProduk() {
-        // menggunakan $this untuk mengakses property dalam class
-        $str = "Produk : $this->judul, Tipe: $this->tipe";
-        if ($this->tipe == "Komik") {
-            $str .= ", Penulis: $this->penulis, Penerbit: $this->penerbit";
-        } else if ($this->tipe == "Game") {
-            $str .= ", Developer: $this->developer";
-        }
-        $harga = "Harga: Rp. $this->harga";
-        return $str . " | " . $harga;
+        // method untuk mencetak informasi harga produk
+       public function cetakHarga() {
+        // Mengembalikan string yang berisi harga produk dengan format yang sesuai
+        return "Harga: Rp. " . number_format($this->harga, 0, ',', '.');
        }
 
 }
 
-$produk1 = new produk("Attack on Titan", "Komik", "Hajime Isayama", "Shueisha", NULL,  30000);
-$produk2 = new produk("Call of Duty", "Game", NULL, NULL, "Activision", 25000);
+class Komik extends Produk {
+        public $penulis, $penerbit;
+
+        public function __construct ($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0) {
+                // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi
+                parent::__construct($judul, $harga);
+                $this->penulis = $penulis;
+                $this->penerbit = $penerbit;
+        }
+
+    public function cetakInfoProduk() {
+        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | " . $this->cetakHarga();
+    }
+}
+
+class Game extends Produk {
+        public $developer;
+
+        public function __construct ($judul = "judul", $developer = "developer", $harga = 0) {
+                // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi
+                parent::__construct($judul, $harga);
+                $this->developer = $developer;
+        }
+
+    public function cetakInfoProduk() {
+        return "Game: $this->judul | Developer: $this->developer | " . $this->cetakHarga();
+    }
+}
+
+$produk1 = new Komik("Attack on Titan", "Hajime Isayama", "Shueisha", 300000);
+$produk2 = new Game("Call of Duty", "Activision", 2500000);
 
 // menampilkan informasi produk
 echo $produk1->cetakInfoProduk();

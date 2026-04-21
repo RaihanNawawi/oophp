@@ -1,29 +1,44 @@
 <?php
 
 // Jualan produk
-// Manga
+// Komik
+// Game
 
 class produk {
 
-// property dengan nilai default
-public $judul = "judul",
-       $penulis = "penulis",
-       $penerbit = "penerbit",
-       $harga = 0;
+// property
+public $judul, $tipe, $penulis, $penerbit, $developer, $harga;
 
-       public function cetakLabelProduk() {
+
+// Constructor untuk menginisialisasi properti dengan nilai default
+       public function __construct($judul = "judul", $tipe = "tipe", $penulis = "penulis", $penerbit = "penerbit", $developer = "developer", $harga = 0) {
+        // Mengisi properti dengan nilai yang diberikan atau nilai default
+        $this->judul = $judul;
+        $this->tipe = $tipe;
+        $this->penulis = $penulis;
+        $this->penerbit = $penerbit;
+        $this->developer = $developer;
+        $this->harga = $harga;
+       }
+
+       public function cetakInfoProduk() {
         // menggunakan $this untuk mengakses property dalam class
-        return "Manga : $this->judul, $this->penulis, $this->penerbit, Harga: $this->harga";
+        $str = "Produk : $this->judul, Tipe: $this->tipe";
+        if ($this->tipe == "Komik") {
+            $str .= ", Penulis: $this->penulis, Penerbit: $this->penerbit";
+        } else if ($this->tipe == "Game") {
+            $str .= ", Developer: $this->developer";
+        }
+        $harga = "Harga: Rp. $this->harga";
+        return $str . " | " . $harga;
        }
 
 }
 
-$produk1 = new produk();
-// mengisi property dengan nilai yang berbeda dengan nilai default
-$produk1->judul = "Attack on Titan";
-$produk1->penulis = "Hajime Isayama";
-$produk1->penerbit = "Shueisha";
-$produk1->harga = 30000;
+$produk1 = new produk("Attack on Titan", "Komik", "Hajime Isayama", "Shueisha", NULL,  30000);
+$produk2 = new produk("Call of Duty", "Game", NULL, NULL, "Activision", 25000);
 
 // menampilkan informasi produk
-echo $produk1->cetakLabelProduk();
+echo $produk1->cetakInfoProduk();
+echo "<br>";
+echo $produk2->cetakInfoProduk();

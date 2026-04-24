@@ -38,7 +38,7 @@ class Komik extends Produk {
         }
 
     public function cetakInfoProduk() {
-        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | " . $this->cetakHarga();
+        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | " . parent::cetakHarga();
     }
 }
 
@@ -53,7 +53,7 @@ class Game extends Produk {
         }
 
     public function cetakInfoProduk() {
-        return "Game: $this->judul | Developer: $this->developer | " . $this->cetakHarga();
+        return "Game: $this->judul | Developer: $this->developer | " . parent::cetakHarga();
     }
 }
 

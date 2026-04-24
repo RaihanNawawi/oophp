@@ -7,7 +7,11 @@
 class Produk {
 
 // property
-public $judul, $penulis, $penerbit, $developer, $harga;
+public $judul;
+public $penulis;
+public $penerbit;
+public $developer;
+public $harga;
 
 
 // Constructor untuk menginisialisasi properti dengan nilai default

@@ -8,9 +8,6 @@ class Produk {
 
 // property
 public $judul;
-public $penulis;
-public $penerbit;
-public $developer;
 public $harga;
 
 
@@ -29,6 +26,9 @@ public $harga;
 }
 
 class Komik extends Produk {
+    // Menambahkan properti khusus untuk Komik
+    public $penulis;
+    public $penerbit;
 
         public function __construct ($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0) {
                 // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi
@@ -43,6 +43,8 @@ class Komik extends Produk {
 }
 
 class Game extends Produk {
+    // Menambahkan properti khusus untuk Game
+    public $developer;
 
         public function __construct ($judul = "judul", $developer = "developer", $harga = 0) {
                 // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi

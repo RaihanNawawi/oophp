@@ -58,15 +58,9 @@ class Game extends Produk {
 }
 
 $produk1 = new Komik("Attack on Titan", "Hajime Isayama", "Shueisha", 300000);
-$produk2 = new Komik("Attack on Titan 2", "Hajime Isayama", "Shueisha", 300000);
-$produk3 = new Game("Call of Duty", "Activision", 2500000);
-$produk4 = new Game("Call of Duty 2", "Activision", 2500000);
+$produk2 = new Game("Call of Duty", "Activision", 2500000);
 
 // menampilkan informasi produk
 echo $produk1->cetakInfoProduk();
 echo "<br>";
 echo $produk2->cetakInfoProduk();
-echo "<br>";
-echo $produk3->cetakInfoProduk();
-echo "<br>";
-echo $produk4->cetakInfoProduk();

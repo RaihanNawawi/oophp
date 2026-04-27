@@ -19,7 +19,7 @@ protected $harga;
         $this->harga = $harga;
        }
         // method untuk mencetak informasi harga produk
-       public function cetakHarga() {
+       private function cetakHarga() {
         // Mengembalikan string yang berisi harga produk dengan format yang sesuai
         return "Harga: Rp. " . number_format($this->harga, 0, ',', '.');
        }
@@ -39,7 +39,8 @@ class Komik extends Produk {
         }
 
     public function cetakInfoProduk() {
-        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | " . parent::cetakHarga();
+        // (Work) Memanggil langung properti harga karena berada dalam class turunan Produk, meskipun harga adalah protected, masih bisa diakses dalam class turunan
+        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | $this->harga"; 
     }
 }
 
@@ -54,6 +55,7 @@ class Game extends Produk {
         }
 
     public function cetakInfoProduk() {
+        // (Error) method cetakHarga() adalah private di class Produk, sehingga tidak bisa dipanggil langsung dari class Game
         return "Game: $this->judul | Developer: $this->developer | " . parent::cetakHarga();
     }
 }
@@ -65,7 +67,3 @@ $produk2 = new Game("Call of Duty", "Activision", 2500000);
 echo $produk1->cetakInfoProduk();
 echo "<br>";
 echo $produk2->cetakInfoProduk();
-echo '<hr>';
-// Sekarang akan error karena properti harga adalah protected, tidak bisa diakses langsung dari luar class)
-// $produk1->harga = 5000; // Error: Cannot access protected property Produk::$harga
-// echo $produk1->cetakInfoProduk();

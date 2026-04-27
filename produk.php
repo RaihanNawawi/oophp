@@ -19,7 +19,7 @@ protected $harga;
         $this->harga = $harga;
        }
         // method untuk mencetak informasi harga produk
-       private function cetakHarga() {
+       protected function cetakHarga() {
         // Mengembalikan string yang berisi harga produk dengan format yang sesuai
         return "Harga: Rp. " . number_format($this->harga, 0, ',', '.');
        }
@@ -39,8 +39,7 @@ class Komik extends Produk {
         }
 
     public function cetakInfoProduk() {
-        // (Work) Memanggil langung properti harga karena berada dalam class turunan Produk, meskipun harga adalah protected, masih bisa diakses dalam class turunan
-        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | $this->harga"; 
+        return "Komik: $this->judul | Penulis: $this->penulis | Penerbit: $this->penerbit | " . parent::cetakHarga(); 
     }
 }
 
@@ -55,7 +54,7 @@ class Game extends Produk {
         }
 
     public function cetakInfoProduk() {
-        // (Error) method cetakHarga() adalah private di class Produk, sehingga tidak bisa dipanggil langsung dari class Game
+        // (Work) method cetakHarga() sudah bisa diakses karena sudah diubah menjadi protected
         return "Game: $this->judul | Developer: $this->developer | " . parent::cetakHarga();
     }
 }

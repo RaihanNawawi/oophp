@@ -8,7 +8,8 @@ class Produk {
 
 // property
 public $judul;
-public $harga;
+// Protected : hanya bisa diakses dalam class ini dan class turunannya
+protected $harga;
 
 
 // Constructor untuk menginisialisasi properti dengan nilai default
@@ -65,6 +66,6 @@ echo $produk1->cetakInfoProduk();
 echo "<br>";
 echo $produk2->cetakInfoProduk();
 echo '<hr>';
-// Contoh jika kita menggunakan public untuk  property (Berbahaya karena property/data instance bisa diubah-ubah)
-$produk1->harga = 5000; // Mengubah harga produk secara langsung
-echo $produk1->cetakInfoProduk(); // Menampilkan informasi produk setelah harga diubah
+// Sekarang akan error karena properti harga adalah protected, tidak bisa diakses langsung dari luar class)
+// $produk1->harga = 5000; // Error: Cannot access protected property Produk::$harga
+// echo $produk1->cetakInfoProduk();

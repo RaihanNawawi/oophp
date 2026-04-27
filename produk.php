@@ -64,3 +64,7 @@ $produk2 = new Game("Call of Duty", "Activision", 2500000);
 echo $produk1->cetakInfoProduk();
 echo "<br>";
 echo $produk2->cetakInfoProduk();
+echo '<hr>';
+// Contoh jika kita menggunakan public untuk  property (Berbahaya karena property/data instance bisa diubah-ubah)
+$produk1->harga = 5000; // Mengubah harga produk secara langsung
+echo $produk1->cetakInfoProduk(); // Menampilkan informasi produk setelah harga diubah

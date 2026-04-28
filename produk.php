@@ -9,7 +9,7 @@ class Produk {
 // property
 private $judul;
 // Protected : hanya bisa diakses dalam class ini dan class turunannya
-protected $harga;
+private $harga;
 
 
 // Constructor untuk menginisialisasi properti dengan nilai default
@@ -28,11 +28,17 @@ protected $harga;
         return $this->judul;
     }
 
+    public function setHarga($harga) {
+        echo "Warning: Harga Produk " . $this->judul . " diubah dari Rp. " . number_format($this->harga, 0, ',', '.') . " menjadi: Rp. " . number_format($harga, 0, ',', '.') . "<br>";
+        $this->harga = $harga;
+    }
+
     // method untuk mencetak informasi harga produk
-    protected function cetakHarga() {
+    public function getHarga() {
         // Mengembalikan string yang berisi harga produk dengan format yang sesuai
         return "Harga: Rp. " . number_format($this->harga, 0, ',', '.');
        }
+       
 
 }
 
@@ -49,7 +55,7 @@ class Komik extends Produk {
         }
 
     public function cetakInfoProduk() {
-        return "Komik: " . parent::getJudul() . " | Penulis: " . $this->penulis . " | Penerbit: " . $this->penerbit . " | " . parent::cetakHarga();
+        return "Komik: " . parent::getJudul() . " | Penulis: " . $this->penulis . " | Penerbit: " . $this->penerbit . " | " . parent::getHarga();
     }
 }
 
@@ -64,8 +70,8 @@ class Game extends Produk {
         }
 
     public function cetakInfoProduk() {
-        // (Work) method cetakHarga() sudah bisa diakses karena sudah diubah menjadi protected
-        return "Game: " . parent::getJudul() . " | Developer: " . $this->developer . " | " . parent::cetakHarga();
+        // (Work) method getHarga() sudah bisa diakses karena sudah diubah menjadi protected
+        return "Game: " . parent::getJudul() . " | Developer: " . $this->developer . " | " . parent::getHarga();
     }
 }
 
@@ -73,12 +79,12 @@ $produk1 = new Komik("Attack on Titan", "Hajime Isayama", "Shueisha", 300000);
 $produk2 = new Game("Call of Duty", "Activision", 2500000);
 
 // Mengganti judul produk menggunakan setter
-$produk1->setJudul("Shingeki no Kyojin");
+$produk1->setHarga(350000);
 // Menampilkan informasi produk menggunakan getter dan method cetakInfoProduk
 echo $produk1->cetakInfoProduk();
 echo "<br>";
 echo "<hr>";
-// Mengganti judul produk menggunakan setter
-$produk2->setJudul("Call of Duty: Modern Warfare");
+// Mengganti harga produk menggunakan setter
+$produk2->setHarga(2600000);
 // Menampilkan informasi produk menggunakan getter dan method cetakInfoProduk
 echo $produk2->cetakInfoProduk();

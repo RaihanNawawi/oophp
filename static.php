@@ -4,14 +4,12 @@ class ContohStatic {
     public static $angka = 1;
 
     public static function halo() {
-        return "Halo, selamat datang di pemrograman OOP dengan PHP!";
+    // Menggunakan self untuk mengakses properti statis dalam method statis
+        return self::$angka++ . ". Halo, selamat datang di pemrograman OOP dengan PHP!" . "<br>";
     }
 }
 
-// Mengakses properti statis tanpa membuat objek
-echo ContohStatic::$angka; // Output: 1
-
-echo "<hr>";
-
 // Mengakses method statis tanpa membuat objek
-echo ContohStatic::halo(); // Output: Halo, selamat datang di pemrograman OOP dengan PHP!
+echo ContohStatic::halo(); // Output: 1. Halo, selamat datang di pemrograman OOP dengan PHP!
+echo ContohStatic::halo(); // Output: 2. Halo, selamat datang di pemrograman OOP dengan PHP!
+echo ContohStatic::halo(); // Output: 3. Halo, selamat datang di pemrograman OOP dengan PHP!

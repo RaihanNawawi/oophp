@@ -1,13 +1,27 @@
 <?php
 
-/* define() tidak bisa digunakan di dalam class, karena define() adalah fungsi global yang digunakan untuk mendefinisikan konstanta di tingkat global. */
-class Coba1 {
-    define("NAMA", "Coba"); // Error: syntax error, unexpected 'define' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
-}
+// Magic Constants Examples
+echo "Baris saat ini: " . __LINE__; // Output: nomor baris saat ini
 
-/* Untuk mendefinisikan konstanta di dalam class, kita harus menggunakan kata kunci const. */
-class Coba2 {
-    const NAMA = "Coba"; // Benar: mendefinisikan konstanta di dalam class menggunakan const
-}
+echo "<hr>";
 
-echo Coba2::NAMA; // Output: Coba
+echo "Path file saat ini: " . __FILE__; // Output: path lengkap dari file saat ini
+
+echo "<hr>";
+
+echo "Anda berada di direktori: " . __DIR__; // Output: direktori dari file saat ini
+
+echo "<hr>";
+
+function coba() {
+    return "Ini Function: " . __FUNCTION__; // Output: nama fungsi saat ini
+}
+echo coba();
+
+echo "<hr>";
+
+class Coba {
+    public $kelas = "Ini Class: " . __CLASS__; // Output: nama kelas saat ini
+}
+$obj = new Coba();
+echo $obj->kelas;

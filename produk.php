@@ -4,7 +4,7 @@
 // Komik
 // Game
 
-class Produk {
+abstract class Produk {
 
 // property
 private $judul;
@@ -18,6 +18,9 @@ private $harga;
         $this->judul = $judul;
         $this->harga = $harga;
        }
+
+    //  Method abstrak untuk mencetak informasi produk, yang harus diimplementasikan oleh kelas turunan
+    abstract public function cetakInfoProduk();
 
     public function setJudul($judul) {
         echo "Warning: Judul diubah dari " . $this->judul . " menjadi: " . $judul . "<br>";
@@ -38,16 +41,15 @@ private $harga;
         // Mengembalikan string yang berisi harga produk dengan format yang sesuai
         return "Harga: Rp. " . number_format($this->harga, 0, ',', '.');
        }
-       
 
 }
 
 class Komik extends Produk {
     // Menambahkan properti khusus untuk Komik
-    public $penulis;
-    public $penerbit;
+    private $penulis;
+    private $penerbit;
 
-        public function __construct ($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0) {
+    public function __construct ($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0) {
                 // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi
                 parent::__construct($judul, $harga);
                 $this->penulis = $penulis;
@@ -61,7 +63,7 @@ class Komik extends Produk {
 
 class Game extends Produk {
     // Menambahkan properti khusus untuk Game
-    public $developer;
+    private $developer;
 
         public function __construct ($judul = "judul", $developer = "developer", $harga = 0) {
                 // Memanggil constructor parent untuk menginisialisasi properti yang diwarisi
@@ -78,13 +80,7 @@ class Game extends Produk {
 $produk1 = new Komik("Attack on Titan", "Hajime Isayama", "Shueisha", 300000);
 $produk2 = new Game("Call of Duty", "Activision", 2500000);
 
-// Mengganti judul produk menggunakan setter
-$produk1->setHarga(350000);
-// Menampilkan informasi produk menggunakan getter dan method cetakInfoProduk
+// Menampilkan informasi produk menggunakan method cetakInfoProduk
 echo $produk1->cetakInfoProduk();
-echo "<br>";
 echo "<hr>";
-// Mengganti harga produk menggunakan setter
-$produk2->setHarga(2600000);
-// Menampilkan informasi produk menggunakan getter dan method cetakInfoProduk
 echo $produk2->cetakInfoProduk();

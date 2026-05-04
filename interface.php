@@ -10,21 +10,31 @@ abstract class Notification implements SendMessage {
     // :void; = Return method tidak mengembalikan nilai apapun, hanya melakukan aksi tertentu (dalam hal ini, logging)
     protected function logNotification(string $recipent, string $message): void {
         // Contoh logging sederhana
-        echo "Log Message: Berhasil terkirim ke $recipent dengan pesan: $message\n";
+        echo "Default Log\n";
     }
 }
 
 class Email extends Notification {
+
+    protected function logNotification(string $recipient, string $message): void {
+        echo "Email Log: Berhasil terkirim ke $recipient dengan pesan: $message\n";
+    }
     public function send(string $recipent, string $message): bool {
-        // Log notifikasi pengiriman
+        // Log notifikasi pengiriman akan mengarah ke method logNotification() yang telah di override di kelas Email
         $this->logNotification($recipent, $message);
         return true; // Simulasi pengiriman berhasil
     }
 }
 
 class SMS extends Notification {
+
+    protected function logNotification(string $recipient, string $message): void {
+        echo "SMS Log: Berhasil terkirim ke $recipient dengan pesan: $message\n";
+    }
+    
     public function send(string $recipent, string $message): bool {
-        $this->logNotification($recipent, $message);
+        // parent::logNotification($recipent, $message); = Memanggil method logNotification() dari kelas induk (Notification) untuk melakukan logging default
+        parent::logNotification($recipent, $message);
         return true; // Simulasi pengiriman berhasil
     }
 }

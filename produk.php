@@ -4,11 +4,15 @@
 // Komik
 // Game
 
-abstract class Produk {
+
+interface InfoProduk {
+    public function cetakInfoProduk();
+}
+
+abstract class Produk implements InfoProduk {
 
 // property
 private $judul;
-// Protected : hanya bisa diakses dalam class ini dan class turunannya
 private $harga;
 
 
@@ -18,9 +22,6 @@ private $harga;
         $this->judul = $judul;
         $this->harga = $harga;
        }
-
-    //  Method abstrak untuk mencetak informasi produk, yang harus diimplementasikan oleh kelas turunan
-    abstract public function cetakInfoProduk();
 
     public function setJudul($judul) {
         echo "Warning: Judul diubah dari " . $this->judul . " menjadi: " . $judul . "<br>";
@@ -44,7 +45,7 @@ private $harga;
 
 }
 
-class Komik extends Produk {
+class Komik extends Produk implements InfoProduk {
     // Menambahkan properti khusus untuk Komik
     private $penulis;
     private $penerbit;
@@ -57,11 +58,11 @@ class Komik extends Produk {
         }
 
     public function cetakInfoProduk() {
-        return "Komik: " . parent::getJudul() . " | Penulis: " . $this->penulis . " | Penerbit: " . $this->penerbit . " | " . parent::getHarga();
+        return "Komik: " . $this->getJudul() . " | Penulis: " . $this->penulis . " | Penerbit: " . $this->penerbit . " | " . $this->getHarga();
     }
 }
 
-class Game extends Produk {
+class Game extends Produk implements InfoProduk {
     // Menambahkan properti khusus untuk Game
     private $developer;
 
@@ -72,8 +73,7 @@ class Game extends Produk {
         }
 
     public function cetakInfoProduk() {
-        // (Work) method getHarga() sudah bisa diakses karena sudah diubah menjadi protected
-        return "Game: " . parent::getJudul() . " | Developer: " . $this->developer . " | " . parent::getHarga();
+        return "Game: " . $this->getJudul() . " | Developer: " . $this->developer . " | " . $this->getHarga();
     }
 }
 

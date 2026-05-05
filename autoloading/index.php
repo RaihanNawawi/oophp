@@ -10,3 +10,5 @@ $produk2 = new Game("Call of Duty", "Activision", 2500000);
 echo $produk1->cetakInfoProduk();
 echo "<hr>";
 echo $produk2->cetakInfoProduk();
+echo "<hr>";
+new Coba();

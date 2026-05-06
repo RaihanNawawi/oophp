@@ -11,4 +11,3 @@ echo $produk1->cetakInfoProduk();
 echo "<hr>";
 echo $produk2->cetakInfoProduk();
 echo "<hr>";
-new Coba();

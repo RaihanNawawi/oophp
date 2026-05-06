@@ -3,12 +3,7 @@
 // Memanggul file init.php yang berada di folder Produk
 require_once 'App/init.php';
 
-$produk1 = new Komik("Attack on Titan", "Hajime Isayama", "Shueisha", 300000);
-$produk2 = new Game("Call of Duty", "Activision", 2500000);
+// Ini akan error karena class User yang berada di folder Produk dan Services memiliki nama yang sama
+new User(); // Memanggil class User yang berada di folder Produk
 
-// Menampilkan informasi produk menggunakan method cetakInfoProduk
-echo $produk1->cetakInfoProduk();
-echo "<hr>";
-echo $produk2->cetakInfoProduk();
-echo "<hr>";
-new Coba();
+new User(); // Memanggil class User yang berada di folder Services
